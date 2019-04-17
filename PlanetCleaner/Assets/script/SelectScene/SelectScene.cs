@@ -41,28 +41,31 @@ public class SelectScene : MonoBehaviour
         {
             start_fadein = false;
         }
+        if (flag == false)
+        {
+            if (Input.GetKeyDown(KeyCode.RightArrow) && count < max_playscene - 1)
+            {
+                count++;
+            }
+            else if (Input.GetKeyDown(KeyCode.LeftArrow) && count > 0)
+            {
+                count--;
+            }
+            else if (Input.GetKeyDown(KeyCode.DownArrow) && count < side)
+            {
+                count += side;
+            }
+            else if (Input.GetKeyDown(KeyCode.UpArrow) && count > max_playscene - side - 1)
+            {
+                count -= side;
+            }
 
-        if (Input.GetKeyDown(KeyCode.RightArrow) && count < max_playscene - 1)
-        {
-            count++;
-        }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow) && count > 0)
-        {
-            count--;
-        }
-        else if (Input.GetKeyDown(KeyCode.DownArrow) && count < side)
-        {
-            count += side;
-        }
-        else if (Input.GetKeyDown(KeyCode.UpArrow) && count > max_playscene - side - 1)
-        {
-            count -= side;
-        }
-        this.transform.GetChild(count).GetComponent<SpriteRenderer>().color = new Color(1.0f, 0.9f, 0.0f);
+            this.transform.GetChild(count).GetComponent<SpriteRenderer>().color = new Color(1.0f, 0.9f, 0.0f);
 
-        if (Input.anyKeyDown)
-        {
-            this.transform.GetChild(count_past).GetComponent<SpriteRenderer>().color = new Color(1.0f, 1.0f, 1.0f);
+            if (Input.anyKeyDown)
+            {
+                this.transform.GetChild(count_past).GetComponent<SpriteRenderer>().color = new Color(1.0f, 1.0f, 1.0f);
+            }
         }
         count_past = count;
 

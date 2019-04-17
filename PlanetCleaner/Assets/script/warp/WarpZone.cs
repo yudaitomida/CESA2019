@@ -8,11 +8,17 @@ public class WarpZone : MonoBehaviour
     private GameObject target;
 
     int speed;
+    [SerializeField]
     bool hit;
     public AudioClip warpSound;
     private AudioSource audioSource;
 
     public Finisher finifher;
+
+    public Rasen rasen;
+
+    [SerializeField]
+    private GameObject hitObject;
 
 
     // Start is called before the first frame update
@@ -27,20 +33,28 @@ public class WarpZone : MonoBehaviour
     {
         //回す
         this.transform.Rotate(new Vector3(0.0f, 0.0f, speed));
+        if (hit == true && rasen.Warping() == true)
+        {
+            if (hitObject)
+            {
+                hitObject.transform.position = target.transform.position;//ワープ
+                hitObject.GetComponent<Rigidbody>().velocity = Vector3.zero;//力をゼロにさせる
+                audioSource.PlayOneShot(warpSound);
+            }
+        }
     }
-
     void OnTriggerEnter(Collider col) 
     {
-
         if (col.gameObject.tag == "Player")
         {
-            if (hit == false && finifher.Finish() == false)
+            if (finifher.Finish() == false)
             {
-                hit = true;
-                target.GetComponent<WarpZone>().hit = true;//ワープ後のヒット判定
-                col.gameObject.transform.position = target.transform.position;//ワープ
-                col.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;//力をゼロにさせる
-                audioSource.PlayOneShot(warpSound);
+                if (hit == false)
+                {
+                    hitObject = col.gameObject;
+                    hit = true;
+                    target.GetComponent<WarpZone>().hit = true;//ワープ後のヒット判定
+                }
             }
         }
 
@@ -52,4 +66,13 @@ public class WarpZone : MonoBehaviour
             hit = false;
         }
     }
+    public bool FrontReturnHit()
+    {
+        return hit;
+    }
+    public bool BackReturnHit()
+    {
+        return target.GetComponent<WarpZone>().hit;//ワープ後のヒット判定
+    }
+
 }

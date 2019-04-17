@@ -13,6 +13,7 @@ public class playermove : MonoBehaviour
 
     public EnemyMove enemymove;
 
+    float time;
     public int jump_power;//jampのパワー
     public float speed;//移動速度
     bool OnGround;    //地面に足がついているかどうか
@@ -29,7 +30,11 @@ public class playermove : MonoBehaviour
 
     public AudioClip hitSound;
 
+    public AudioClip footSound;
+
     private AudioSource audioSource;
+
+    private bool doNotDisturb;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,14 +46,19 @@ public class playermove : MonoBehaviour
         MainSpriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         myTrans = this.transform;
         audioSource = this.GetComponent<AudioSource>();
-
+        doNotDisturb = false;
+        time = 0.0f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(finisher.Finish() == false)
+        if (finisher.Finish() == true)
         {
+            doNotDisturb = true;
+        }
+        if(doNotDisturb == false)
+        { 
             particle.GoParticle();
 
             //移動
@@ -77,14 +87,7 @@ public class playermove : MonoBehaviour
                 ChangeSprite(player_default);
             }
             speed = (OnGround == false)? 0.05f : 0.1f;
-            //if (OnGround == false)
-            //{
-            //    speed = 0.05f;
-            //}
-            //else
-            //{
-            //    speed = 0.1f;
-            //}
+
         }
         //惑星の切り替え
         if (player_state == 0)
@@ -104,6 +107,19 @@ public class playermove : MonoBehaviour
         if (col.gameObject.tag == "Planet" || col.gameObject.tag == "Rock")
         {
             OnGround = true;
+            if(Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.LeftArrow))
+            {
+                time += Time.deltaTime;
+                if (time > footSound.length)
+                {
+                    time = 0.0f;
+                }
+                else
+                {
+                    audioSource.PlayOneShot(footSound, 2);
+                }
+            }
+
         }
         if(col.gameObject.tag == "Enemy" && player_state == enemymove.EnemyState())
         {

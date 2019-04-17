@@ -342,6 +342,7 @@ GameObject:
   - component: {fileID: 92518285}
   - component: {fileID: 92518284}
   - component: {fileID: 92518290}
+  - component: {fileID: 92518291}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Player
@@ -449,6 +450,7 @@ MonoBehaviour:
   player_default: {fileID: 21300000, guid: d04e60e988409bb47804ba77e43e364f, type: 3}
   player_vacume: {fileID: 21300000, guid: b84a6aa5fc1bd3e4987e89a10d7aa6b3, type: 3}
   hitSound: {fileID: 8300000, guid: 6df61d519d39bae4aa3ee06e76118b69, type: 3}
+  footSound: {fileID: 8300000, guid: 7d0bae7f8f0a84048ac59184d0e0df71, type: 3}
 --- !u!65 &92518288
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -573,6 +575,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &92518291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 92518283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2d37501d2a24ce44b6f2986d690579a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &97020004
 GameObject:
   m_ObjectHideFlags: 0
@@ -5514,6 +5528,7 @@ RectTransform:
   - {fileID: 1050903681}
   - {fileID: 530996333}
   - {fileID: 86735304}
+  - {fileID: 680794825}
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10734,7 +10749,7 @@ GameObject:
   - component: {fileID: 594263034}
   m_Layer: 0
   m_Name: WarpIn
-  m_TagString: Untagged
+  m_TagString: Warp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10754,6 +10769,7 @@ MonoBehaviour:
   target: {fileID: 1930209275}
   warpSound: {fileID: 8300000, guid: 4a4db60efd5bb4b42ac164f61d682755, type: 3}
   finifher: {fileID: 1506941262}
+  rasen: {fileID: 92518291}
 --- !u!212 &594263031
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10991,6 +11007,56 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &680794824
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 680794825}
+  - component: {fileID: 680794826}
+  m_Layer: 5
+  m_Name: GimicDescription
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &680794825
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 680794824}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 695377626}
+  m_Father: {fileID: 154113313}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 400, y: 160}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &680794826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 680794824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd44469cd8e1c6b469b0f6fa8c9e64c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camera_object: {fileID: 1506941259}
 --- !u!1 &688673688
 GameObject:
   m_ObjectHideFlags: 0
@@ -11112,12 +11178,101 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 688673688}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 300.20868, y: 94.90997, z: -1.59375}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &695377625
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 695377626}
+  - component: {fileID: 695377629}
+  - component: {fileID: 695377628}
+  - component: {fileID: 695377627}
+  m_Layer: 5
+  m_Name: DescriptionWarp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &695377626
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 695377625}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.57, y: 1.57, z: 0.785}
+  m_Children: []
+  m_Father: {fileID: 680794825}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -238, y: -33}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &695377627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 695377625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad36be22eb2263942b6c1d14b028330b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WarpText: {fileID: 21300000, guid: 4e25607f00977014d8df1e5d3ac1ee77, type: 3}
+  EnemyText: {fileID: 21300000, guid: acda1cb98ff2a9a42a90d58e2ce54f08, type: 3}
+--- !u!114 &695377628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 695377625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: 4e25607f00977014d8df1e5d3ac1ee77, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 1
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+--- !u!222 &695377629
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 695377625}
+  m_CullTransparentMesh: 0
 --- !u!1 &705135544
 GameObject:
   m_ObjectHideFlags: 0
@@ -11721,6 +11876,7 @@ MonoBehaviour:
   player_default: {fileID: 0}
   player_vacume: {fileID: 0}
   hitSound: {fileID: 0}
+  footSound: {fileID: 0}
 --- !u!1 &1506941257
 GameObject:
   m_ObjectHideFlags: 0
@@ -12174,7 +12330,7 @@ GameObject:
   - component: {fileID: 1930209280}
   m_Layer: 0
   m_Name: WarpOut
-  m_TagString: Untagged
+  m_TagString: Warp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12194,6 +12350,7 @@ MonoBehaviour:
   target: {fileID: 594263029}
   warpSound: {fileID: 8300000, guid: 4a4db60efd5bb4b42ac164f61d682755, type: 3}
   finifher: {fileID: 1506941262}
+  rasen: {fileID: 92518291}
 --- !u!212 &1930209277
 SpriteRenderer:
   m_ObjectHideFlags: 0

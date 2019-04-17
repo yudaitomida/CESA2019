@@ -793,6 +793,7 @@ GameObject:
   - component: {fileID: 449780771}
   - component: {fileID: 449780770}
   - component: {fileID: 449780769}
+  - component: {fileID: 449780776}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Player
@@ -995,7 +996,8 @@ MonoBehaviour:
   particle: {fileID: 1923186110}
   player_default: {fileID: 21300000, guid: d04e60e988409bb47804ba77e43e364f, type: 3}
   player_vacume: {fileID: 21300000, guid: b84a6aa5fc1bd3e4987e89a10d7aa6b3, type: 3}
-  hitSound: {fileID: 0}
+  hitSound: {fileID: 8300000, guid: 6df61d519d39bae4aa3ee06e76118b69, type: 3}
+  footSound: {fileID: 8300000, guid: 7d0bae7f8f0a84048ac59184d0e0df71, type: 3}
 --- !u!65 &449780774
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1025,6 +1027,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &449780776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 449780768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2d37501d2a24ce44b6f2986d690579a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &508402759 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 83091a1ddd8afac4b9b3c76bb9ad89d6,
@@ -1178,6 +1192,7 @@ MonoBehaviour:
   target: {fileID: 1231418708}
   warpSound: {fileID: 8300000, guid: 4a4db60efd5bb4b42ac164f61d682755, type: 3}
   finifher: {fileID: 87529777}
+  rasen: {fileID: 449780776}
 --- !u!212 &624093190
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2340,6 +2355,7 @@ MonoBehaviour:
   target: {fileID: 624093187}
   warpSound: {fileID: 8300000, guid: 4a4db60efd5bb4b42ac164f61d682755, type: 3}
   finifher: {fileID: 87529777}
+  rasen: {fileID: 449780776}
 --- !u!212 &1231418711
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2893,7 +2909,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WarpText: {fileID: 21300000, guid: 4e25607f00977014d8df1e5d3ac1ee77, type: 3}
-  EnemyText: {fileID: 21300000, guid: acda1cb98ff2a9a42a90d58e2ce54f08, type: 3}
+  EnemyText: {fileID: 21300000, guid: 7a8d65dabe6240e4bb52d5d766e2b663, type: 3}
 --- !u!1 &1804428488
 GameObject:
   m_ObjectHideFlags: 0
